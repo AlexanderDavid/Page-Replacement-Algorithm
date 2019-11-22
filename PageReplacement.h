@@ -190,10 +190,10 @@ public:
 			{
                 // If the current pages is at max capacity then a page needs
                 // to be swapped out before another can be swapped in
-                if (!(current_pages.size() == (size_t) num_pages_))
+                if (current_pages.size() == (size_t) num_frames_)
 				{
                     // Remove the page from the top of the queue to make
-                    // room. This is the FIFO algorithm.
+                    // room. This is the FIFO part of the algorithm.
                     current_pages.pop_front();
 				}
 
@@ -250,7 +250,7 @@ public:
             {
                 // If current pages in the main memory is at
                 // maximum size then remove the front element
-                if (current_pages.size() == (size_t) num_pages_)
+                if (current_pages.size() == (size_t) num_frames_)
 				{
                     // Remove the top of the queue to make room
                     current_pages.pop_front();
@@ -395,7 +395,7 @@ public:
             // algorithm was going to be used in a prod setting then these would be factored
             // out so that the conditions were only checked once but I am leaving them here
             // for readability.
-            else if (current_pages.size() != (size_t) num_pages_ &&
+            else if (current_pages.size() != (size_t) num_frames_ &&
                      !FindInContainer<std::vector<int>>(*i, current_pages))
             {
                 page_faults += 1;

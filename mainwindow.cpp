@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "graphwindow.h"
 
 #include "PageReplacement.h"
 
@@ -58,7 +59,7 @@ void MainWindow::GenerateReferenceString()
 {
     // Generate the reference string, the size is defined as 20 in the requirement document
     // but the upper bound will be the number of frames in virtual memory
-    std::vector<int> gen_ref_string = AbstractPageReplacement::GenerateRefString(20, ui->spinNumFrames->value());
+    std::vector<int> gen_ref_string = AbstractPageReplacement::GenerateRefString(20, ui->spinNumPages->value());
 
     // Turn it into a nice cstring with ", " delimiter
     std::stringstream ss;
